@@ -1,0 +1,4 @@
+/word/*.docx
+  Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+/ppt/*.pptx
+  Content-Type: application/vnd.openxmlformats-officedocument.presentationml.presentation
