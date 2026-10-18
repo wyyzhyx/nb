@@ -3,112 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>美线内部网站/文件下载</title>
+    <title>📂 美线内部文件中心</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, "Microsoft YaHei", sans-serif;
-            max-width: 760px;
-            margin: 40px auto;
-            padding: 0 20px;
-            background: #f7f8fa;
+            font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 40px 20px 60px;
             color: #333;
         }
-        h1 {
-            font-size: 22px;
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
         }
+
+        /* 顶部标题区 */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 26px;
+            color: #2d3748;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .header .subtitle {
+            font-size: 14px;
+            color: #718096;
+        }
+
+        /* 卡片通用样式 */
         .card {
             background: #fff;
-            border-radius: 10px;
-            padding: 18px 20px;
+            border-radius: 12px;
+            padding: 20px 24px;
             margin-bottom: 16px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid transparent;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+
+        /* 不同分类的左侧边框颜色 */
+        .card.strategy { border-left-color: #667eea; }
+        .card.culture { border-left-color: #f093fb; }
+        .card.org { border-left-color: #4facfe; }
+        .card.biz { border-left-color: #43e97b; }
+        .card.hr { border-left-color: #fa709a; }
+        .card.marketing { border-left-color: #a18cd1; }
+        .card.risk { border-left-color: #fccb90; }
+        .card.innovation { border-left-color: #e0c3fc; }
+        .card.party { border-left-color: #ff9a9e; }
+        .card.attendance { border-left-color: #a1c4fd; }
+        .card.welfare { border-left-color: #84fab0; }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
         }
         .card h2 {
             font-size: 16px;
-            margin: 0 0 10px;
+            font-weight: 600;
+            color: #2d3748;
         }
-        a {
-            display: block;
-            padding: 6px 0;
-            color: #1a73e8;
+        .file-count {
+            font-size: 12px;
+            color: #a0aec0;
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        /* 文件链接样式 */
+        .file-list {
+            margin-top: 8px;
+        }
+        .file-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            color: #4a5568;
             text-decoration: none;
+            font-size: 14px;
+            transition: background 0.15s;
+            background: #f7fafc;
+            margin-bottom: 6px;
         }
-        a:hover {
-            text-decoration: underline;
+        .file-link:last-child {
+            margin-bottom: 0;
         }
-        .tip {
+        .file-link:hover {
+            background: #ebf8ff;
+            color: #2b6cb0;
+        }
+        .file-icon {
+            font-size: 18px;
+        }
+        .file-name {
+            flex: 1;
+        }
+        .download-arrow {
+            color: #cbd5e0;
+            font-size: 14px;
+        }
+
+        /* 空状态 */
+        .empty {
+            color: #a0aec0;
             font-size: 13px;
-            color: #888;
-            margin-top: 20px;
+            padding: 8px 0;
+            font-style: italic;
+        }
+
+        /* 底部总纲 */
+        .manifesto {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-top: 4px solid #2d3748;
+        }
+        .manifesto-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .manifesto-item {
+            font-size: 13px;
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 6px;
+        }
+        .manifesto-item strong {
+            color: #2b6cb0;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
-    <h1>美线内部网站/文件下载</h1>
+    <div class="container">
 
-    <div class="card">
-        <h2>企业战略管理</h2>
-        <a href="ppt/美线云链战略定位汇报.pptx">美线云链战略定位汇报.pptx</a>       
-    </div>
+        <!-- 顶部 -->
+        <div class="header">
+            <h1>📂 美线内部文件中心</h1>
+            <div class="subtitle">美线云链 · 内部资料下载平台</div>
+        </div>
 
-    <div class="card">
-        <h2>企业文化</h2>
-    </div> 
-    
-    <div class="card">
-        <h2>企业组织分工/团队与协作</h2>
-       
-    </div>
-    
-     <div class="card">
-        <h2>政企客户/供应链/提货点管理</h2>
-    
-     </div>
+        <!-- 1. 企业战略管理 -->
+        <div class="card strategy">
+            <div class="card-header">
+                <h2>企业战略管理</h2>
+                <span class="file-count">1 个文件</span>
+            </div>
+            <div class="file-list">
+                <a class="file-link" href="ppt/美线云链战略定位汇报.pptx">
+                    <span class="file-icon">📊</span>
+                    <span class="file-name">美线云链战略定位汇报.pptx</span>
+                    <span class="download-arrow">⬇️</span>
+                </a>
+            </div>
+        </div>
 
-    <div class="card">
-        <h2>企业人力资源/主播/卓越会员</h2>
-       
-    </div>
-      
-    <div class="card">
-        <h2>市场营销/活动策划</h2>
-       
-    </div>
-    
-    <div class="card">
-        <h2>企业风险管理/预测预想/群测群防</h2>
-       
-    </div>
+        <!-- 2. 企业文化 -->
+        <div class="card culture">
+            <div class="card-header">
+                <h2>企业文化</h2>
+            </div>
+            <div class="empty">暂无文件</div>
+        </div>
 
-    <div class="card">
-        <h2>企业创新与实践</h2>
-       
-    </div>
-    
-     <div class="card">
-        <h2>企业党建/工建</h2>
-       
-    </div>
-    
-   <div class="card">
-        <h2>员工考勤制度/请销假管理</h2>
-      
-    </div>
-    
-    <div class="card">
-        <h2>员工福利待遇政策</h2>
-      
-    </div>
+        <!-- 3. 组织分工 -->
+        <div class="card org">
+            <div class="card-header">
+                <h2>企业组织分工 / 团队与协作</h2>
+            </div>
+            <div class="empty">暂无文件</div>
+        </div>
 
-    <div class="tip">
-【总纲】努力做好产品和服务，让平凡的人创造不平凡的事业<br>
-✅ 官兵一致｜解放军：去等级、讲真话、目标统一<br>
-✅ 阿米巴・敬天爱人｜稻盛和夫：单元自治、独立核算、利他共生<br>
-✅ 爱与自由｜胖东来：尊重伙伴，温暖客户，守住底线<br>
-✅ 不装｜张一鸣：去虚饰、讲事实、务实高效，拒绝形式主义<br>
-✅ 长期主义｜贝佐斯：深耕底盘，沉淀生态，着眼长远价值<br>
-✅ 客户第一｜阿里：洞察需求，以用户价值为根本<br>
-✅ 精益思想｜丰田：消除浪费，持续迭代，提升人货场效率<br>
+        <!-- 4. 政企客户 -->
+        <div class="card biz">
+            <div class="card-header">
+                <h2>政企客户 / 供应链 / 提货点管理</h2>
+            </div>
+            <div class="empty">暂无文件</div>
+        </div>
+
+        <!-- 5. 人力资源 -->
+        <div class="card hr">
+            <div class="card-header">
+                <h2>企业人力资源 / 主播 / 卓越会员</h2>
+            </div>
+            <div class="empty">暂无文件</div>
+        </div>
+
+        <!-- 6. 市场营销 -->
+        <div class="card marketing">
+            <div class="card-header">
+                <h2>市场营销 / 活动策划</h2>
+            </div>
+            <div class="empty">暂无文件</div>
+        </div>
+
+        <!-- 7. 风险管理 -->
+        <div class="card risk">
+            <div class="card-header">
+                <h2>企业风险管理 / 预测预想 / 群测群防</h2>
+            </div>
+            <div class="empty">暂无文件</div>
+        </div>
+
+        <!-- 8. 创新与实践 -->
+        <div class="card innovation">
+            <div class="card-header">
+                <h2>企业创新与实践</h2>
+            </div>
+            <div class="empty">暂无文件</div>
+        </div>
+
+        <!-- 9. 党建/工建 -->
+        <div class="card party">
+            <div class="card-header">
+                <h2>企业党建 / 工建</h2>
+            </div>
+            <div class="empty">暂无文件</div>
+        </div>
+
+        <!-- 10. 考勤制度 -->
+        <div class="card attendance">
+            <div class="card-header">
+                <h2>员工考勤制度 / 请销假管理</h2>
+            </div>
+            <div class="empty">暂无文件</div>
+        </div>
+
+        <!-- 11. 福利待遇 -->
+        <div class="card welfare">
+            <div class="card-header">
+                <h2>员工福利待遇政策</h2>
+            </div>
+            <div class="empty">暂无文件</div>
+        </div>
+
+        <!-- 底部总纲 -->
+        <div class="manifesto">
+            <div class="manifesto-title">【总纲】努力做好产品和服务，让平凡的人创造不平凡的事业</div>
+            <div class="manifesto-item">✅ <strong>官兵一致</strong>｜解放军：去等级、讲真话、目标统一</div>
+            <div class="manifesto-item">✅ <strong>阿米巴・敬天爱人</strong>｜稻盛和夫：单元自治、独立核算、利他共生</div>
+            <div class="manifesto-item">✅ <strong>爱与自由</strong>｜胖东来：尊重伙伴，温暖客户，守住底线</div>
+            <div class="manifesto-item">✅ <strong>不装</strong>｜张一鸣：去虚饰、讲事实、务实高效，拒绝形式主义</div>
+            <div class="manifesto-item">✅ <strong>长期主义</strong>｜贝佐斯：深耕底盘，沉淀生态，着眼长远价值</div>
+            <div class="manifesto-item">✅ <strong>客户第一</strong>｜阿里：洞察需求，以用户价值为根本</div>
+            <div class="manifesto-item">✅ <strong>精益思想</strong>｜丰田：消除浪费，持续迭代，提升人货场效率</div>
+        </div>
+
     </div>
 </body>
 </html>
